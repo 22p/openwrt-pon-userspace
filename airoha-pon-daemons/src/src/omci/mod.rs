@@ -32,12 +32,14 @@ const RESPONSE_CACHE_SIZE: usize = 32;
 pub use self::config::IdentityConfig;
 
 fn ctc_authentication_status_name(status: u8) -> &'static str {
-    // Airoha CTC AuthStatus uses 1 for acceptance and 2 for rejection.
+    // Q/CT 2360-2011 defines the result codes for the CTC LOID Authentication ME.
     match status {
         0 => "not-authenticated",
         1 => "accepted",
-        2 => "rejected",
-        _ => "operator-specific",
+        2 => "loid-not-found",
+        3 => "password-mismatch",
+        4 => "loid-conflict",
+        _ => "reserved-status",
     }
 }
 
