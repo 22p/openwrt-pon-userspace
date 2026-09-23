@@ -154,6 +154,18 @@ msgstr "LOID"
 msgid "LOID authentication"
 msgstr "LOID 认证结果"
 
+msgid "LOID does not exist"
+msgstr "LOID 不存在"
+
+msgid "LOID exists, but the password is incorrect"
+msgstr "LOID 存在，但密码错误"
+
+msgid "LOID is already authenticated by another ONU"
+msgstr "该 LOID 已被其他 ONU 认证"
+
+msgid "Reserved authentication status"
+msgstr "保留的认证状态"
+
 msgid "LOID configured"
 msgstr "已配置 LOID"
 

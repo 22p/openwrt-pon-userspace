@@ -654,6 +654,10 @@ impl Mib {
     fn rebuild_upload_snapshot(&mut self) {
         let mut records = Vec::new();
         for (&(class_id, entity_id), entity) in &self.entities {
+            // CTC requires LOID authentication attributes to be read with GET, not MIB Upload.
+            if class_id == CLASS_CTC_LOID_AUTH {
+                continue;
+            }
             let mut mask = 0u16;
             let mut values = Vec::new();
             for (&index, attribute) in &entity.attributes {
@@ -1063,7 +1067,12 @@ impl Mib {
         if request.class_id != CLASS_ONU_DATA || request.entity_id != 0 {
             return self.entity_error(request);
         }
+        let loid_authentication = self.entities.get(&(CLASS_CTC_LOID_AUTH, 0)).cloned();
         self.entities = self.autonomous_defaults.clone();
+        // The CTC LOID Authentication ME survives MIB Reset with every attribute unchanged.
+        if let Some(entity) = loid_authentication {
+            self.entities.insert((CLASS_CTC_LOID_AUTH, 0), entity);
+        }
         self.olt_created.clear();
         self.table_snapshot = None;
         self.upload_snapshot.clear();

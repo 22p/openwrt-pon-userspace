@@ -110,8 +110,10 @@ function displayAuthentication(value) {
 	case 'not-reported': return _('Not reported');
 	case 'not-authenticated': return _('Not authenticated');
 	case 'accepted': return _('Accepted');
-	case 'rejected': return _('Rejected');
-	case 'operator-specific': return _('Operator-specific result');
+	case 'loid-not-found': return _('LOID does not exist');
+	case 'password-mismatch': return _('LOID exists, but the password is incorrect');
+	case 'loid-conflict': return _('LOID is already authenticated by another ONU');
+	case 'reserved-status': return _('Reserved authentication status');
 	default: return value || _('Unknown');
 	}
 }
