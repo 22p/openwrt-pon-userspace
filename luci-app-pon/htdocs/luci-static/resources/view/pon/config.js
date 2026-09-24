@@ -297,7 +297,7 @@ return view.extend({
 							selector,
 							E('button', {
 								'class': 'cbi-button cbi-button-action',
-								'disabled': m.readonly,
+								'disabled': m.readonly || null,
 								'click': ui.createHandlerFn(this, 'handleBoardDataUpload', storages, selector)
 							}, [ _('Upload and write') ])
 						])

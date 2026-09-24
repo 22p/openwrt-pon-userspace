@@ -95,13 +95,13 @@ return view.extend({
 						E('button', {
 							'class': 'cbi-button cbi-button-action',
 							'id': 'pon-debug-download',
-							'disabled': m.readonly,
+							'disabled': m.readonly || null,
 							'click': ui.createHandlerFn(this, 'handleDownload')
 						}, _('Download diagnostic package')),
 						E('button', {
 							'class': 'cbi-button cbi-button-negative',
 							'id': 'pon-debug-restart',
-							'disabled': m.readonly,
+							'disabled': m.readonly || null,
 							'click': ui.createHandlerFn(this, 'handleRestart')
 						}, _('Restart PON line'))
 					])
